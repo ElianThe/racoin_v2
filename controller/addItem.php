@@ -11,14 +11,12 @@ class addItem
     function addItemView($twig, $menu, $chemin, $cat, $dpt)
     {
         $template = $twig->load("add.html.twig");
-        echo $template->render(array(
+        echo $template->render([
                 "breadcrumb"   => $menu,
                 "chemin"       => $chemin,
                 "categories"   => $cat,
                 "departements" => $dpt
-            )
-        );
-
+        ]);
     }
 
     private function isEmail($email)

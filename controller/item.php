@@ -35,8 +35,8 @@ use model\Categorie;
             "annonceur" => $this->annonceur,
             "dep" => $this->departement->nom_departement,
             "photo" => $this->photo,
-            "categories" => $cat]
-        );
+            "categories" => $cat
+        ]);
     }
 
     private function chargerDonneesItem($n)

@@ -105,7 +105,7 @@ use model\Categorie;
         }
 
         $template = $twig->load("modifyPost.html.twig");
-        echo $template->render(array("breadcrumb" => $menu,
+        echo $template->render(["breadcrumb" => $menu,
             "chemin" => $chemin,
             "annonce" => $this->annonce,
             "annonceur" => $this->annonceur,
@@ -113,7 +113,8 @@ use model\Categorie;
             "categories" => $cat,
             "departements" => $dpt,
             "dptItem" => $this->dptItem,
-            "categItem" => $this->categItem));
+            "categItem" => $this->categItem
+        ]);
     }
 
     function edit($twig, $menu, $chemin, $allPostVars, $id){

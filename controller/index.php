@@ -10,26 +10,31 @@ class index
 {
     protected $annonce = array();
 
-    public function displayAllAnnonce($twig, $menu, $chemin, $cat)
+    public function displayAllAnnonce($twig, $chemin, $cat)
     {
-        $template = $twig->load("index.html.twig");
-        $menu     = array(
+        $menu = array(
             array(
                 'href' => $chemin,
-                'text' => 'Acceuil'
+                'text' => 'Accueil'
             ),
         );
 
-        $this->getAll($chemin);
-        echo $template->render(array(
+        $this->getAllAnnonces();
+        $this->renderTemplate($twig, "index.html.twig", [
             "breadcrumb" => $menu,
             "chemin"     => $chemin,
             "categories" => $cat,
             "annonces"   => $this->annonce
-        ));
+        ]);
     }
 
-    public function getAll($chemin)
+    private function renderTemplate($twig, $templateName, $data)
+    {
+        $template = $twig->load($templateName);
+        echo $template->render($data);
+    }
+
+    public function getAllAnnonces()
     {
         $tmp     = Annonce::with("Annonceur")->orderBy('id_annonce', 'desc')->take(12)->get();
         $annonce = [];
@@ -49,4 +54,5 @@ class index
         }
         $this->annonce = $annonce;
     }
+
 }

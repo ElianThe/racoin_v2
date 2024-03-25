@@ -72,9 +72,9 @@ $chemin = dirname($_SERVER['SCRIPT_NAME']);
 $cat = new getCategorie();
 $dpt = new getDepartment();
 
-$app->get('/', function () use ($twig, $menu, $chemin, $cat) {
+$app->get('/', function () use ($twig, $chemin, $cat) {
     $index = new index();
-    $index->displayAllAnnonce($twig, $menu, $chemin, $cat->getCategories());
+    $index->displayAllAnnonce($twig, $chemin, $cat->getCategories());
 });
 
 $app->get('/item/{n}', function ($request, $response, $arg) use ($twig, $menu, $chemin, $cat) {

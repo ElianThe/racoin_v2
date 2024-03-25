@@ -77,10 +77,9 @@ $app->get('/', function () use ($twig, $chemin, $cat) {
     $index->displayAllAnnonce($twig, $chemin, $cat->getCategories());
 });
 
-$app->get('/item/{n}', function ($request, $response, $arg) use ($twig, $menu, $chemin, $cat) {
-    $n     = $arg['n'];
+$app->get('/item/{n}', function ($request, $response, $arg) use ($twig, $chemin, $cat) {
     $item = new item();
-    $item->afficherItem($twig, $menu, $chemin, $n, $cat->getCategories());
+    $item->afficherItem($twig, $chemin, $arg['n'], $cat->getCategories());
 });
 
 $app->get('/add', function () use ($twig, $app, $menu, $chemin, $cat, $dpt) {

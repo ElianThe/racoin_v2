@@ -85,9 +85,11 @@ use model\Categorie;
             return;
         }
         $template = $twig->load("modifyGet.html.twig");
-        echo $template->render(array("breadcrumb" => $menu,
+        echo $template->render([
+            "breadcrumb" => $menu,
             "chemin" => $chemin,
-            "annonce" => $this->annonce));
+            "annonce" => $this->annonce
+        ]);
     }
 
     function modifyPost($twig, $menu, $chemin, $n, $cat, $dpt){

@@ -12,12 +12,12 @@ class index
 
     public function displayAllAnnonce($twig, $chemin, $cat)
     {
-        $menu = array(
-            array(
+        $menu = [
+            [
                 'href' => $chemin,
                 'text' => 'Accueil'
-            ),
-        );
+            ],
+        ];
 
         $this->getAllAnnonces();
         $this->renderTemplate($twig, "index.html.twig", [
@@ -36,7 +36,7 @@ class index
 
     public function getAllAnnonces()
     {
-        $tmp     = Annonce::with("Annonceur")->orderBy('id_annonce', 'desc')->take(12)->get();
+        $tmp = Annonce::with("Annonceur")->orderBy('id_annonce', 'desc')->take(12)->get();
         $annonce = [];
         foreach ($tmp as $t) {
             $t->nb_photo = Photo::where("id_annonce", "=", $t->id_annonce)->count();

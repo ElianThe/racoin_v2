@@ -5,13 +5,12 @@ namespace controller;
 use model\Annonce;
 use model\Annonceur;
 
-class addItem
+class addItem extends ControllerAbstract
 {
 
     function addItemView($twig, $menu, $chemin, $cat, $dpt)
     {
-        $template = $twig->load("add.html.twig");
-        echo $template->render([
+        $this->renderTemplate($twig, "add.html.twig", [
                 "breadcrumb"   => $menu,
                 "chemin"       => $chemin,
                 "categories"   => $cat,
@@ -125,9 +124,10 @@ class addItem
             $annonceur->save();
             $annonceur->annonce()->save($annonce);
 
-
-            $template = $twig->load("add-confirm.html.twig");
-            echo $template->render(array("breadcrumb" => $menu, "chemin" => $chemin));
+            $this->renderTemplate($twig, "add-confirm.html.twig", [
+                    "breadcrumb" => $menu,
+                    "chemin"     => $chemin
+            ]);
         }
     }
 }

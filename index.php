@@ -72,6 +72,9 @@ $chemin = dirname($_SERVER['SCRIPT_NAME']);
 $cat = new getCategorie();
 $dpt = new getDepartment();
 
+// routes modifié : / , /item/{n} , /add (post et get)
+
+
 $app->get('/', function () use ($twig, $chemin, $cat) {
     $index = new index();
     $index->displayAllAnnonce($twig, $chemin, $cat->getCategories());

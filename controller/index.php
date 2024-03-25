@@ -6,7 +6,7 @@ use model\Annonce;
 use model\Photo;
 use model\Annonceur;
 
-class index
+class index extends ControllerAbstract
 {
     protected $annonce = array();
 
@@ -26,12 +26,6 @@ class index
             "categories" => $cat,
             "annonces"   => $this->annonce
         ]);
-    }
-
-    private function renderTemplate($twig, $templateName, $data)
-    {
-        $template = $twig->load($templateName);
-        echo $template->render($data);
     }
 
     public function getAllAnnonces()
